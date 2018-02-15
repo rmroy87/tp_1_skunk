@@ -16,7 +16,7 @@ public class DiceTest {
 		Dice dice = new Dice(die1, die2);
 		int diceRoll[];		
 		
-		System.out.printf("Dice - Loaded Dice (1,2) Test\n");
+		System.out.printf("Dice - Loaded Dice 1 (1,2) Test\n");
 		
 		for (int i=0; i<5; i++) {
 			diceRoll = dice.Roll();
@@ -46,7 +46,7 @@ public class DiceTest {
 		Dice dice = new Dice(die1, die2);
 		int diceRoll[];		
 		
-		System.out.printf("Dice - Loaded Dice2 ({1,2,3},{4,5,6}) Test\n");
+		System.out.printf("Dice - Loaded Dice 2 ({1,2,3},{4,5,6}) Test\n");
 		
 		for (int i=0; i<5; i++) {
 			diceRoll = dice.Roll();
@@ -81,7 +81,7 @@ public class DiceTest {
 		Dice dice = new Dice(die1, die2);
 		int diceRoll[];		
 		
-		System.out.printf("Dice - Loaded Dice2 ({1},Non-loaded)) Test\n");
+		System.out.printf("Dice - Loaded Dice 3 ({1},Non-loaded)) Test\n");
 		
 		for (int i=0; i<5; i++) {
 			diceRoll = dice.Roll();
