@@ -1,6 +1,8 @@
-/SkunkApp.class
-/SkunkAppTest.class
-/Die.class
-/DieTest.class
 /Dice.class
 /DiceTest.class
+/Die.class
+/DieTest.class
+/SkunkApp.class
+/SkunkAppTest.class
+/Player.class
+/PlayerTest.class
