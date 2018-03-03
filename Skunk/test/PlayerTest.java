@@ -10,11 +10,8 @@ public class PlayerTest {
 		Player p1 = new Player("Player_1");
 		
 		playerName = p1.GetName();
-		if ( playerName == "Player_1")
-			System.out.printf("  Get Name: Name = %s, expected = %s\n", 
-					playerName, "Player_1");		
-		else
-			fail("Invalid Return Value");
+		assertTrue("Player Name is not Player_1",
+				   (playerName == "Player_1"));		
 	}
 	
 	@Test
@@ -23,11 +20,9 @@ public class PlayerTest {
 		Player p1 = new Player("Player_1");
 		
 		playerScore = p1.GetScore();
-		if ( playerScore == 0)
-			System.out.printf("  Get Score: Score = %d, expected = %d\n", 
-					playerScore, 0);		
-		else
-			fail("Invalid Return Value");
+		assertTrue("Player Score is not 0",
+				   (playerScore == 0));		
+		
 	}
 	
 	@Test
@@ -36,11 +31,8 @@ public class PlayerTest {
 		Player p1 = new Player("Player_1");
 		
 		playerChips = p1.GetTotalChips();
-		if ( playerChips == 50)
-			System.out.printf("  GetTotalChips: Chips = %d, expected = %d\n", 
-					playerChips, 50);		
-		else
-			fail("Invalid Return Value");
+		assertTrue("Player Chips are not 50",
+				   (playerChips == 50));			
 	}
 	
 	@Test
@@ -49,18 +41,12 @@ public class PlayerTest {
 		Player p1 = new Player("Player_1");
 		
 		playerChips = p1.TakeChips(20);
-		if (playerChips == 20)
-			System.out.printf("  Take (%d) Chips: Chips = %d, Expected = %d, Remain = %d\n", 
-					20, playerChips, 20, p1.GetTotalChips() );		
-		else
-			fail("Invalid Return Value");
+		assertTrue("Player Chips are not 20",
+				   (playerChips == 20));		
 		
 		playerChips = p1.TakeChips(40);
-		if (playerChips == 30)
-			System.out.printf("  Take (%d) Chips: Chips = %d, Expected = %d, Remain = %d\n", 
-					40, playerChips, 30, p1.GetTotalChips() );		
-		else
-			fail("Invalid Return Value");		
+		assertTrue("Player Chips are not 30",
+				   (playerChips == 30));		
 	}
 	
 	@Test
@@ -69,18 +55,12 @@ public class PlayerTest {
 		Player p1 = new Player("Player_1");
 		
 		playerChips = p1.PutChips(20);
-		if (playerChips == 70)
-			System.out.printf("  Put (%d) Chips: Chips = %d, Expected = %d, Balance = %d\n", 
-					20, playerChips, 70, p1.GetTotalChips() );		
-		else
-			fail("Invalid Return Value");
+		assertTrue("Player Chips are not 70",
+				   (playerChips == 70));		
 		
 		playerChips = p1.PutChips(40);
-		if (playerChips == 110)
-			System.out.printf("  Put (%d) Chips: Chips = %d, Expected = %d, Balance = %d\n", 
-					40, playerChips, 110, p1.GetTotalChips() );		
-		else
-			fail("Invalid Return Value");		
+		assertTrue("Player Chips are not 110",
+				   (playerChips == 110));				
 	}
 	
 	
@@ -95,11 +75,8 @@ public class PlayerTest {
 		Player p1 = new Player("Player_1");
 		
 		playerTurn = p1.RollDice(dice);
-		if ( playerTurn == 1)
-			System.out.printf("  One Skunk: Turn = %d, expected = %d\n", 
-					playerTurn, 1);		
-		else
-			fail("Invalid Return Value");
+		assertTrue("Player Roll Loaded Die is not SKUNK",
+				   (playerTurn == 1));		
 	}
 	
 	@Test
@@ -113,11 +90,8 @@ public class PlayerTest {
 		Player p1 = new Player("Player_1");
 		
 		playerTurn = p1.RollDice(dice);
-		if ( playerTurn == 2)
-			System.out.printf("  Skunk/DEUCE: Turn = %d, expected = %d\n", 
-					playerTurn, 2);		
-		else
-			fail("Invalid Return Value");
+		assertTrue("Player Roll Loaded Die is not SKUNK/DEUCE",
+				   (playerTurn == 2));
 	}
 	
 	@Test
@@ -131,11 +105,8 @@ public class PlayerTest {
 		Player p1 = new Player("Player_1");	
 		
 		playerTurn = p1.RollDice(dice);
-		if ( playerTurn == 4)
-			System.out.printf("  TWO Skunk: Turn = %d, expected = %d\n", 
-					playerTurn,4);		
-		else
-			fail("Invalid Return Value");
+		assertTrue("Player Roll Loaded Die is not TWO SKUNK",
+				   (playerTurn == 4));
 	}
 
 	@Test
@@ -150,30 +121,33 @@ public class PlayerTest {
 		Player p1 = new Player("Player_1");	
 		
 		playerTurn = p1.RollDice(dice);
-		if ( playerTurn == 0) {
-			p1.EndSeries();
-			playerScore = p1.GetScore();
-			if ( playerScore == 7) {
-				System.out.printf("  Good Roll: Turn = %d, expected = %d, Score = %d, expected = %d\n", 
-						playerTurn,0, playerScore, 7);	
-			}else {
-				fail("Invalid Return Value");
-			}
-		}else
-			fail("Invalid Return Value");
+		assertFalse("Player Roll Loaded Die is not Good Roll",
+				   (playerTurn != 0));		
+	
+		p1.EndSeries();
+		playerScore = p1.GetScore();
+		assertTrue("Player Roll Loaded Die is not Score of 7",
+				   (playerScore == 7));
+		
 	}
 	
 	@Test
 	public void testGetStatus() {
-		String playerStatus = new String();
+		String playerStatus;// = new String();
+		String playerTest = new String("Player_1: Score= 0 Chips: 50 (Blue= 2,Red= 4,White= 10)");
 		Player p1 = new Player("Player_1");
 		
 		playerStatus = p1.GetStatus();
-		//if ( playerStatus == "Player_1")
-			System.out.printf("  Get Status--> %s\n", 
-					playerStatus);		
-		//else
-		//	fail("Invalid Return Value");
+		
+		System.out.printf("  Get Status--> %s, len=%d\n", 
+				playerStatus, playerStatus.length());
+		System.out.printf("  Get Status--> %s, len=%d\n", 
+				playerTest, playerTest.length());
+		
+		assertTrue("Player Status is not as expected",
+				   (playerStatus.compareTo(playerTest) == 0));
+		
+		
 	}
 
 }
