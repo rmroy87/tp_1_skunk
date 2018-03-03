@@ -1,7 +1,12 @@
 /Dice.class
 /DiceTest.class
+<<<<<<< HEAD
 /Die.class
 /DieTest.class
 /Player.class
 /SkunkApp.class
 /SkunkAppTest.class
+=======
+/Player.class
+/PlayerTest.class
+>>>>>>> branch 'master' of https://github.com/rmroy87/tp_1_skunk.git
