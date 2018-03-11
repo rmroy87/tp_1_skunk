@@ -8,6 +8,7 @@ public class Player {
 	private int blueChips;
 	private int redChips;
 	private int whiteChips;
+	private int lastRoll;
 	private String playerName;
 	private String playerStatus;
 
@@ -23,6 +24,7 @@ public class Player {
 		this.whiteChips  = 10;
 		this.gameScore   = 0;
 		this.seriesScore = 0;
+		this.lastRoll    = 0;
 		this.playerName  = thePlayerName;
 	}
 	
@@ -62,6 +64,18 @@ public class Player {
 	public void StartSeries()
 	{
 		this.seriesScore = 0;
+	}
+	//
+	// Get the Series Score
+	public int GetSeriesScore()
+	{
+		return this.seriesScore;
+	}
+	//
+	//  Get the Total score of last roll
+	public int GetLastRoll()
+	{
+		return this.lastRoll;
 	}
 	//
 	// End the current Series
@@ -162,10 +176,13 @@ public class Player {
 					rollResult     = 1;
 					this.seriesScore = 0;
 				}
+				this.lastRoll = 0;
 			}else {
 				//
 				// Just some valid dice here...
-				this.seriesScore += (aRoll[0] + aRoll[1]);
+				this.lastRoll = aRoll[0] + aRoll[1];
+				this.seriesScore += this.lastRoll;
+				
 			}
 		}
 				

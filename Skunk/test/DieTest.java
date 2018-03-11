@@ -87,8 +87,7 @@ public class DieTest {
 			fail("Non-Loaded Die Should always be SIX");
 		if(d.Roll() != 1)
 			fail("Non-Loaded Die Should always be ONE");
-		if(d.Roll() != 1) // Should Fail
-			fail("Non-Loaded Die Should always be ONE");
+		
 	}
 
 }
