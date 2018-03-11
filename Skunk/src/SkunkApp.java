@@ -9,7 +9,6 @@ public class SkunkApp
 	private ArrayList<Player> gamePlayers;
 	private int[] nextSeriesStatus;
 	private Dice gameDice;
-	private int gameKitty;
 	private UI ui;
 	private boolean justOneGame;
 	private Game game;
@@ -20,10 +19,33 @@ public class SkunkApp
 		Die d1 = new Die();
 		Die d2 = new Die();
 		
-		gameDice = new Dice(d1, d2);
-		ui = theUI;
+		this.gameDice = new Dice(d1, d2);
+		this.ui = theUI;		
+		this.justOneGame = false;
+	}
+	//
+	// An overloaded contructor to run a default setup
+	public SkunkApp(UI theUI, String theP1Name, String theP2Name)
+	{
+		Player thePlayer;
+		Die d1 = new Die();
+		Die d2 = new Die();
+				
+		this.gameDice = new Dice(d1, d2);
+		this.ui = theUI;		
+		this.justOneGame = true;	
+		this.numGamePlayers = 2;
+		this.gamePlayers = new ArrayList<Player> (2);
+		this.nextSeriesStatus = new int[2];
 		
-		justOneGame = false;
+		thePlayer = new Player(theP1Name);
+		gamePlayers.add(thePlayer);	
+		nextSeriesStatus[0] = 1;
+		
+		thePlayer = new Player(theP2Name);
+		gamePlayers.add(thePlayer);	
+		nextSeriesStatus[1] = 1;
+		
 	}
 	
 	public int GetNumberOfPlayers()
@@ -152,42 +174,38 @@ public class SkunkApp
 	public static void main(String[] args)
 	{
 		int status;
-		int gameResult;
-		int howManyPlayers;
+		//int gameResult;
+		//int howManyPlayers;
+		String P1 = new String("PlayerOne");
+		String P2 = new String("PlayerTwo");
 		UI ui = new UI();
-		Game game;
-		SkunkApp match = new SkunkApp(ui);
+		SkunkApp match = new SkunkApp(ui, P1, P2);
 		
 		status = match.SetupSkunkMatch();
 		//
 		// If they exited game, no work to do
-		if(status != -1) {
-			howManyPlayers = match.SetupNumPlayers();
-			
-			if(howManyPlayers >= 2){
-				match.SetupPlayers(howManyPlayers);
+		if(status != -1) {			
 				
-				match.SetupGame();
+			match.SetupGame();
+			//
+			// Play until all one winner, or a quit is
+			// Given
+			while(status == 0) {
+				match.PlayOneGame();			
+									
+				match.DumpPlayerScores();
 				//
-				// Play until all one winner, or a quit is
-				// Given
-				while(status == 0) {
-					gameResult = match.PlayOneGame();			
-										
-					match.DumpPlayerScores();
+				// Determine if we should play more
+				if(match.GetJustOneGameFlag() == false) {
 					//
-					// Determine if we should play more
-					if(match.GetJustOneGameFlag() == false) {
-						//
-						// Do they want to play another game?
-						if(ui.DisplayYesNoPrompt("Play Another game?") == false){
-							status = -1;
-						}
-					}else {
-						status = -1; /* Just Playing one Game */
+					// Do they want to play another game?
+					if(ui.DisplayYesNoPrompt("Play Another game?") == false){
+						status = -1;
 					}
+				}else {
+					status = -1; /* Just Playing one Game */
 				}
-			}			
+			}					
 		}		
 		
 		StdOut.println("*************************************");
