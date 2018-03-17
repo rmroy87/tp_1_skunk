@@ -174,43 +174,49 @@ public class SkunkApp
 	public static void main(String[] args)
 	{
 		int status;
-		//int gameResult;
-		//int howManyPlayers;
-		String P1 = new String("PlayerOne");
-		String P2 = new String("PlayerTwo");
+		int numPlayers;
 		UI ui = new UI();
-		SkunkApp match = new SkunkApp(ui, P1, P2);
+		SkunkApp match = new SkunkApp(ui);
 		
 		status = match.SetupSkunkMatch();
 		//
 		// If they exited game, no work to do
 		if(status != -1) {			
 				
-			match.SetupGame();
-			//
-			// Play until all one winner, or a quit is
-			// Given
-			while(status == 0) {
-				match.PlayOneGame();			
-									
-				match.DumpPlayerScores();
+			numPlayers = match.SetupNumPlayers();
+			
+			if(match.SetupPlayers(numPlayers) == numPlayers) {
+			
+				match.SetupGame();
 				//
-				// Determine if we should play more
-				if(match.GetJustOneGameFlag() == false) {
+				// Play until all one winner, or a quit is
+				// Given
+				while(status == 0) {
+					match.PlayOneGame();			
+										
+					match.DumpPlayerScores();
 					//
-					// Do they want to play another game?
-					if(ui.DisplayYesNoPrompt("Play Another game?") == false){
-						status = -1;
+					// Determine if we should play more
+					if(match.GetJustOneGameFlag() == false) {
+						//
+						// Do they want to play another game?
+						if(ui.DisplayYesNoPrompt("Play Another game?") == false){
+							status = -1;
+						}else {
+							
+						}
+					}else {
+						status = -1; /* Just Playing one Game */
 					}
-				}else {
-					status = -1; /* Just Playing one Game */
-				}
-			}					
+				}	
+			}else {
+				ui.DisplayMsg("**** CRITICAL ERROR - Failed to Create Players ****", true);
+			}
 		}		
 		
-		StdOut.println("*************************************");
-		StdOut.println("**  Thank You for Playing SKUNK    **");
-		StdOut.println("*************************************");
+		ui.DisplayMsg("*************************************", true);
+		ui.DisplayMsg("**  Thank You for Playing SKUNK    **", true);
+		ui.DisplayMsg("*************************************", true);
 		
 	}
 }

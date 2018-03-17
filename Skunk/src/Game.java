@@ -21,8 +21,7 @@ public class Game {
 		this.dice = theDice;
 		this.players = thePlayers;
 		this.numPlayers = thePlayers.size();
-		this.series = new Series(this.ui, this.dice, this.players);
-		
+			
 		this.kitty = 0;
 	}
 	
@@ -98,12 +97,24 @@ public class Game {
 	{
 		int hitLastSeries = 0;
 		int seriesNum = 1;
+		int i;
+		Player thePlayer;
 		
 		this.kitty = 0;
 		
 		ui.DisplayMsg("**********************************************************", true);	
 		ui.DisplayMsg("*** Playing SKUNK Game ***", true);	
 		ui.DisplayMsg("**********************************************************", true);	
+		
+		this.series = new Series(this.ui, this.dice, this.players);
+		
+		//
+		// Clear out all players scores, in case we are the
+		// later games in a match
+		for(i=0;i<this.numPlayers;i++) {
+			thePlayer = this.players.get(i);
+			thePlayer.ClearScore();
+		}
 		
 		while(hitLastSeries == 0) {
 			this.series.SetKitty(0); 
@@ -131,6 +142,7 @@ public class Game {
 		this.HandleGameWinner();	
 		
 		DumpPlayerScores();
+		
 		
 		return seriesNum;
 	}

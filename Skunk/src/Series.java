@@ -128,36 +128,43 @@ public class Series {
 			
 			if((this.nextSeriesStatus[i] == 1) || (this.nextSeriesStatus[i] == 0)) {
 				thePlayer = this.players.get(i);
-				ui.DisplayMsg(thePlayer.GetName() + " [Score = " + thePlayer.GetScore() + "] is up:", true);
-				
-				turn = PlayerTurn(thePlayer);
-				if(turn == -1) {
-					//
-					// This player is out of chips, no more rolls for them
-					this.nextSeriesStatus[i] = turn;
-				}else if(turn >= 100) {
-					//
-					// Somebody went out, so all other players with chips get one
-					// more roll, setup the next series array
-					this.nextSeriesStatus[i] = turn;
+				//
+				// Make sure player is not bankrupt
+				if(thePlayer.GetTotalChips() > 0) {						
 					
-					for(j=0;j<this.numPlayers;j++) {
-						if(j != i) {
-							if(this.nextSeriesStatus[j] == 1) {
-								this.nextSeriesStatus[j] = 0;
+					ui.DisplayMsg(thePlayer.GetName() + " [Score = " + thePlayer.GetScore() + "] is up:", true);
+					
+					turn = PlayerTurn(thePlayer);
+					if(turn == -1) {
+						//
+						// This player is out of chips, no more rolls for them
+						this.nextSeriesStatus[i] = turn;
+					}else if(turn >= 100) {
+						//
+						// Somebody went out, so all other players with chips get one
+						// more roll, setup the next series array
+						this.nextSeriesStatus[i] = turn;
+						
+						for(j=0;j<this.numPlayers;j++) {
+							if(j != i) {
+								if(this.nextSeriesStatus[j] == 1) {
+									this.nextSeriesStatus[j] = 0;
+								}
 							}
 						}
+						lastSeries = 1;
+						break;
+					}else {
+						//
+						// Still in the game, able to roll the next series.
+						this.nextSeriesStatus[i] = turn;
 					}
-					lastSeries = 1;
-					break;
+				
+					ui.DisplayMsg(thePlayer.GetName() + " [Score = " + thePlayer.GetScore() + "] is done:", true);
+					ui.DisplayMsg("---------------------------------------------------------------", true);
 				}else {
-					//
-					// Still in the game, able to roll the next series.
-					this.nextSeriesStatus[i] = turn;
+					ui.DisplayMsg(thePlayer.GetName() + " is BANKRUPT and cannot ROLL", true);
 				}
-			
-				ui.DisplayMsg(thePlayer.GetName() + " [Score = " + thePlayer.GetScore() + "] is done:", true);
-				ui.DisplayMsg("---------------------------------------------------------------", true);
 			}
 		}
 				

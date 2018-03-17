@@ -39,6 +39,15 @@ public class Player {
 	}
 	
 	//
+	// Use to clear scores, normally during a new game of
+	// a match
+	public void ClearScore()
+	{
+		this.gameScore   = 0;
+		this.seriesScore = 0;
+	}
+	
+	//
 	// Grab the players name
 	public String GetName()
 	{
