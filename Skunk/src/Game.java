@@ -132,6 +132,7 @@ public class Game {
 		ui.DisplayMsg(" ", true);
 		
 		this.series.PlaySeries(seriesNum);
+		this.kitty    += this.series.GetKitty();
 		
 		ui.DisplayMsg(" ", true);
 		ui.DisplayMsg("Final Game Kity (Before Penalties) = " + 

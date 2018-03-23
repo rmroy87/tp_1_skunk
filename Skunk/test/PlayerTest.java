@@ -132,6 +132,27 @@ public class PlayerTest {
 	}
 	
 	@Test
+	public void testRollDiceGoodRollDie1Die2() {
+		int playerTurn;
+		int load1[] = {3};
+		int load2[] = {4};
+		Die die1  = new Die(load1);
+		Die die2  = new Die(load2);		
+		Dice dice = new Dice(die1, die2);
+		Player p1 = new Player("Player_1");	
+		
+		playerTurn = p1.RollDice(dice);
+		assertFalse("Player Roll Loaded Die is not Good Roll",
+				   (playerTurn != 0));
+		
+	
+		assertFalse("Player Die 1 Not 3", p1.GetLastRollDie1() != 3);
+		
+		assertFalse("Player Die 2 Not 4", p1.GetLastRollDie2() != 4);
+			
+	}
+	
+	@Test
 	public void testGetStatus() {
 		String playerStatus;// = new String();
 		String playerTest = new String("Player_1: Score= 0 Chips: 50 (Blue= 2,Red= 4,White= 10)");

@@ -9,6 +9,8 @@ public class Player {
 	private int redChips;
 	private int whiteChips;
 	private int lastRoll;
+	private int lastRollDie1;
+	private int lastRollDie2;
 	private String playerName;
 	private String playerStatus;
 
@@ -26,6 +28,8 @@ public class Player {
 		this.seriesScore = 0;
 		this.lastRoll    = 0;
 		this.playerName  = thePlayerName;
+		this.lastRollDie1 = 0;
+		this.lastRollDie2 = 0;
 	}
 	
 	//
@@ -86,6 +90,19 @@ public class Player {
 	{
 		return this.lastRoll;
 	}
+	//
+	//  Get the score of last roll, die 1
+	public int GetLastRollDie1()
+	{
+		return this.lastRollDie1;
+	}
+	//
+	//  Get the score of last roll, die 2
+	public int GetLastRollDie2()
+	{
+		return this.lastRollDie2;
+	}
+	
 	//
 	// End the current Series
 	public void EndSeries()
@@ -162,6 +179,11 @@ public class Player {
 		int aRoll[] = new int[2];
 		
 		aRoll = theDice.Roll();
+		//
+		// Save for display purposes, not total
+		this.lastRollDie1 = aRoll[0];
+		this.lastRollDie2 = aRoll[1];
+		
 		//
 		// If one is a SKUNK...
 		if((aRoll[0] == 1) && (aRoll[1] == 1)) {

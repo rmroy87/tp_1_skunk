@@ -74,6 +74,8 @@ public class Series {
 			roll = thePlayer.RollDice(this.dice);
 			ui.DisplayMsg(	"  Roll = " + 
 							thePlayer.GetLastRoll() + 
+							" (" + thePlayer.GetLastRollDie1() + "," + 
+							thePlayer.GetLastRollDie2() + ") " +
 							", Score = " + 
 							thePlayer.GetSeriesScore(), true);
 			

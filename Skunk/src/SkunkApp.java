@@ -170,11 +170,30 @@ public class SkunkApp
 	}
 
 
+	public void DumpMatchResults(int numPlayers)
+	{
+		int i;		
+		Player thePlayer;
+	
+		this.ui.DisplayMsg("--------------------------------------", true);
+		this.ui.DisplayMsg("--          Match Results           --", true);
+		this.ui.DisplayMsg("--------------------------------------", true);
+		
+		
+		for(i=0;i<numPlayers;i++) {
+			thePlayer = this.gamePlayers.get(i);
+			this.ui.DisplayMsg("  " + thePlayer.GetName() + 
+					      " - Chips = " + thePlayer.GetTotalChips(), true);			
+		}		
+		
+		this.ui.DisplayMsg("--------------------------------------", true);
+		
+	}
 	
 	public static void main(String[] args)
 	{
 		int status;
-		int numPlayers;
+		int numPlayers=0;
 		UI ui = new UI();
 		SkunkApp match = new SkunkApp(ui);
 		
@@ -213,6 +232,8 @@ public class SkunkApp
 				ui.DisplayMsg("**** CRITICAL ERROR - Failed to Create Players ****", true);
 			}
 		}		
+		
+		match.DumpMatchResults(numPlayers);
 		
 		ui.DisplayMsg("*************************************", true);
 		ui.DisplayMsg("**  Thank You for Playing SKUNK    **", true);
