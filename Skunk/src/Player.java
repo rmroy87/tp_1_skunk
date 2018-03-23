@@ -13,6 +13,7 @@ public class Player {
 	private int lastRollDie2;
 	private String playerName;
 	private String playerStatus;
+	private int gamesWon;
 
 	//
 	// Normal Player constructor, uses default chip counts
@@ -30,8 +31,21 @@ public class Player {
 		this.playerName  = thePlayerName;
 		this.lastRollDie1 = 0;
 		this.lastRollDie2 = 0;
+		this.gamesWon     = 0;
 	}
 	
+	//
+	// Player won the game
+	public void PlayerWon()
+	{
+		this.gamesWon += 1;
+	}
+	//
+	// How many games has this player won
+	public int GamesWon()
+	{
+		return this.gamesWon;
+	}
 	//
 	// Grab the players name
 	public String GetStatus()

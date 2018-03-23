@@ -231,7 +231,8 @@ public class SkunkApp
 		for(i=0;i<numPlayers;i++) {
 			thePlayer = this.gamePlayers.get(i);
 			this.ui.DisplayMsg("  " + thePlayer.GetName() + 
-					      " - Chips = " + thePlayer.GetTotalChips(), true);			
+					      " - Chips = " + thePlayer.GetTotalChips() +
+					      " Games Won = " + thePlayer.GamesWon(), true);			
 		}		
 		
 		this.ui.DisplayMsg("--------------------------------------", true);

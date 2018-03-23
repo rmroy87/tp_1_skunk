@@ -12,6 +12,7 @@ public class Game {
 	private Dice dice;
 	private UI ui;
 	private Series series;
+	private int lastGameWinner;
 	
 	//
 	// Normal Game constructor
@@ -21,8 +22,16 @@ public class Game {
 		this.dice = theDice;
 		this.players = thePlayers;
 		this.numPlayers = thePlayers.size();
+		this.lastGameWinner = -1;
 			
 		this.kitty = 0;
+	}
+	
+	//
+	// Get the Index for the last game winner
+	public int LastGameWinner()
+	{
+		return this.lastGameWinner;
 	}
 	
 	//
@@ -79,9 +88,12 @@ public class Game {
 			// Payout the winner
 			thePlayer = this.players.get(highIndex);
 			thePlayer.PutChips(this.kitty);
+			thePlayer.PlayerWon();
 			
 			ui.DisplayMsg("*** Winner of Game: " + thePlayer.GetName() + 
 						  " Game Kitty = " + this.kitty + " Chips ***", true);
+			
+			this.lastGameWinner = highIndex;
 			
 			this.kitty = 0;
 		}else {
@@ -103,7 +115,7 @@ public class Game {
 		this.kitty = 0;
 		
 		ui.DisplayMsg("**********************************************************", true);	
-		ui.DisplayMsg("*** Playing SKUNK Game ***", true);	
+		ui.DisplayMsg("***              Playing SKUNK Game                    ***", true);	
 		ui.DisplayMsg("**********************************************************", true);	
 		
 		this.series = new Series(this.ui, this.dice, this.players);
