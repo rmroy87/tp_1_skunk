@@ -15,8 +15,8 @@ public class SeriesTest {
 		Die die2  = new Die(load2);		
 		Dice dice = new Dice(die1, die2);
 			
-		Player p1 = new Player("Player_1");
-		Player p2 = new Player("Player_2");
+		Player p1 = new Player("Player_1", false);
+		Player p2 = new Player("Player_2", false);
 		String[] virtPrompt = new String[2];
 		virtPrompt[0] = "Y";
 		virtPrompt[1] = "N";
@@ -42,8 +42,8 @@ public class SeriesTest {
 		Die die2  = new Die(load2);		
 		Dice dice = new Dice(die1, die2);
 		UI ui     = new UI();		
-		Player p1 = new Player("Player_1");
-		Player p2 = new Player("Player_2");
+		Player p1 = new Player("Player_1", false);
+		Player p2 = new Player("Player_2", false);
 		
 		ArrayList<Player> players = new ArrayList<Player> (2);
 		players.add(p1);
@@ -70,8 +70,8 @@ public class SeriesTest {
 		virtPrompt[1] = "N";		
 		UI ui = new UI(virtPrompt, 2);	
 		
-		Player p1 = new Player("Player_1");
-		Player p2 = new Player("Player_2");
+		Player p1 = new Player("Player_1", false);
+		Player p2 = new Player("Player_2", false);
 		
 		ArrayList<Player> players = new ArrayList<Player> (2);
 		players.add(p1);
@@ -102,8 +102,8 @@ public class SeriesTest {
 		virtPrompt[0] = "Y";
 		virtPrompt[1] = "N";		
 		UI ui = new UI(virtPrompt, 2);		
-		Player p1 = new Player("Player_1");
-		Player p2 = new Player("Player_2");
+		Player p1 = new Player("Player_1", false);
+		Player p2 = new Player("Player_2", false);
 		
 		ArrayList<Player> players = new ArrayList<Player> (2);
 		players.add(p1);
@@ -131,8 +131,8 @@ public class SeriesTest {
 		virtPrompt[0] = "Y";
 		virtPrompt[1] = "N";		
 		UI ui = new UI(virtPrompt, 2);		
-		Player p1 = new Player("Player_1");
-		Player p2 = new Player("Player_2");
+		Player p1 = new Player("Player_1", false);
+		Player p2 = new Player("Player_2", false);
 		
 		ArrayList<Player> players = new ArrayList<Player> (2);
 		players.add(p1);
@@ -165,8 +165,8 @@ public class SeriesTest {
 		virtPrompt[0] = "Y";
 		virtPrompt[1] = "N";		
 		UI ui = new UI(virtPrompt, 2);	
-		Player p1 = new Player("Player_1");
-		Player p2 = new Player("Player_2");
+		Player p1 = new Player("Player_1", false);
+		Player p2 = new Player("Player_2", false);
 		
 		ArrayList<Player> players = new ArrayList<Player> (2);
 		players.add(p1);
@@ -199,8 +199,8 @@ public class SeriesTest {
 		virtPrompt[0] = "Y";
 		virtPrompt[1] = "N";		
 		UI ui = new UI(virtPrompt, 2);		
-		Player p1 = new Player("Player_1");
-		Player p2 = new Player("Player_2");
+		Player p1 = new Player("Player_1", false);
+		Player p2 = new Player("Player_2", false);
 		
 		ArrayList<Player> players = new ArrayList<Player> (2);
 		players.add(p1);
@@ -233,8 +233,8 @@ public class SeriesTest {
 		virtPrompt[0] = "Y";
 		virtPrompt[1] = "N";		
 		UI ui = new UI(virtPrompt, 2);		
-		Player p1 = new Player("Player_1");
-		Player p2 = new Player("Player_2");
+		Player p1 = new Player("Player_1", false);
+		Player p2 = new Player("Player_2", false);
 		
 		ArrayList<Player> players = new ArrayList<Player> (2);
 		players.add(p1);
@@ -271,8 +271,8 @@ public class SeriesTest {
 		virtPrompt[2] = "Y";
 		virtPrompt[3] = "N";
 		UI ui = new UI(virtPrompt, 4);		
-		Player p1 = new Player("Player_1");
-		Player p2 = new Player("Player_2");
+		Player p1 = new Player("Player_1", false);
+		Player p2 = new Player("Player_2", false);
 		
 		ArrayList<Player> players = new ArrayList<Player> (2);
 		players.add(p1);
@@ -315,8 +315,8 @@ public class SeriesTest {
 		virtPrompt[10] = "Y";
 		virtPrompt[11] = "N";
 		UI ui = new UI(virtPrompt, 12);			
-		Player p1 = new Player("Player_1");
-		Player p2 = new Player("Player_2");
+		Player p1 = new Player("Player_1", false);
+		Player p2 = new Player("Player_2", false);
 		
 		ArrayList<Player> players = new ArrayList<Player> (2);
 		players.add(p1);

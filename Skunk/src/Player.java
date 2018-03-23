@@ -14,10 +14,12 @@ public class Player {
 	private String playerName;
 	private String playerStatus;
 	private int gamesWon;
+	private boolean isBot;
 
+	
 	//
 	// Normal Player constructor, uses default chip counts
-	public Player(String thePlayerName)
+	public Player(String thePlayerName, boolean playerIsBot)
 	{
 		//
 		// Default is 50 chips, with this breakdown
@@ -32,8 +34,43 @@ public class Player {
 		this.lastRollDie1 = 0;
 		this.lastRollDie2 = 0;
 		this.gamesWon     = 0;
+		this.isBot        = playerIsBot;
 	}
 	
+	//
+	// Player is a bot
+	public boolean PlayerIsBot()
+	{
+		return this.isBot;
+	}
+	
+	//
+	// Does Bot Want to Roll
+	public boolean BotPlayerWantToRoll()
+	{
+		boolean rc = false;
+		
+		if(this.isBot == true) {
+			if(this.seriesScore > 0) {
+				if((this.seriesScore > 10) || 
+				   ((this.gameScore + this.seriesScore) > 100)) {
+					rc = false;
+				}else {
+					if(this.gameScore > 90) {
+						rc = false;
+					}else {
+						rc = true;
+					}
+				}
+			}else {
+				//
+				// Always roll on first try of seried
+				rc = true;
+			}
+		}
+		
+		return rc;
+	}
 	//
 	// Player won the game
 	public void PlayerWon()

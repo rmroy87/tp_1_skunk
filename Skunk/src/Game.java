@@ -143,6 +143,7 @@ public class Game {
 		ui.DisplayMsg("*** Last Roll for All Players! ***", true);	
 		ui.DisplayMsg(" ", true);
 		
+		this.series.SetKitty(0);
 		this.series.PlaySeries(seriesNum);
 		this.kitty    += this.series.GetKitty();
 		

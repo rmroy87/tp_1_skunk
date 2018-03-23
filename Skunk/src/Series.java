@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
-import edu.princeton.cs.introcs.StdIn;
-import edu.princeton.cs.introcs.StdOut;
+//import edu.princeton.cs.introcs.StdIn;
+//import edu.princeton.cs.introcs.StdOut;
 
 //
 // This class is to manage one Round or Series (as described in
@@ -44,14 +44,34 @@ public class Series {
 	public boolean AskPlayerToRoll(Player thePlayer)
 	{
 		boolean  prompt;
+		String   test = new String();
 		
-		prompt = this.ui.DisplayYesNoPrompt(thePlayer.GetName() + 
-						" Turn: Series Score = " + 
-						thePlayer.GetSeriesScore() + 
-						", Game Score = " + 
-						(thePlayer.GetSeriesScore() + 
-								thePlayer.GetScore() ) + 
-						", do you want to Roll Dice?");		
+		//
+		// Is it a real player or a BOT
+		if(thePlayer.PlayerIsBot() == false) {
+			prompt = this.ui.DisplayYesNoPrompt(thePlayer.GetName() + 
+							" Turn: Series Score = " + 
+							thePlayer.GetSeriesScore() + 
+							", Game Score = " + 
+							(thePlayer.GetSeriesScore() + 
+									thePlayer.GetScore() ) + 
+							", do you want to Roll Dice?");
+		}else {
+			prompt = thePlayer.BotPlayerWantToRoll();
+			if(prompt == true) {
+				test = "Y";
+			}else {
+				test = "N";
+			}
+			
+			this.ui.DisplayMsg(thePlayer.GetName() + 
+								" Turn: Series Score = " + 
+									thePlayer.GetSeriesScore() + 
+									", Game Score = " + 
+									(thePlayer.GetSeriesScore() + 
+											thePlayer.GetScore() ) + 
+									", do you want to Roll Dice? " + test, true);
+		}
 		
 		return prompt;
 	}

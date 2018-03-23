@@ -7,7 +7,7 @@ public class PlayerTest {
 	@Test
 	public void testGetName() {
 		String playerName = new String();
-		Player p1 = new Player("Player_1");
+		Player p1 = new Player("Player_1", false);
 		
 		playerName = p1.GetName();
 		assertTrue("Player Name is not Player_1",
@@ -17,7 +17,7 @@ public class PlayerTest {
 	@Test
 	public void testGetScore() {
 		int playerScore;
-		Player p1 = new Player("Player_1");
+		Player p1 = new Player("Player_1", false);
 		
 		playerScore = p1.GetScore();
 		assertTrue("Player Score is not 0",
@@ -28,7 +28,7 @@ public class PlayerTest {
 	@Test
 	public void testGetChips() {
 		int playerChips;
-		Player p1 = new Player("Player_1");
+		Player p1 = new Player("Player_1", false);
 		
 		playerChips = p1.GetTotalChips();
 		assertTrue("Player Chips are not 50",
@@ -38,7 +38,7 @@ public class PlayerTest {
 	@Test
 	public void testTakeChips() {
 		int playerChips;
-		Player p1 = new Player("Player_1");
+		Player p1 = new Player("Player_1", false);
 		
 		playerChips = p1.TakeChips(20);
 		assertTrue("Player Chips are not 20",
@@ -52,7 +52,7 @@ public class PlayerTest {
 	@Test
 	public void testPutChips() {
 		int playerChips;
-		Player p1 = new Player("Player_1");
+		Player p1 = new Player("Player_1", false);
 		
 		playerChips = p1.PutChips(20);
 		assertTrue("Player Chips are not 70",
@@ -72,7 +72,7 @@ public class PlayerTest {
 		Die die1  = new Die(load1);
 		Die die2  = new Die(load2);		
 		Dice dice = new Dice(die1, die2);
-		Player p1 = new Player("Player_1");
+		Player p1 = new Player("Player_1", false);
 		
 		playerTurn = p1.RollDice(dice);
 		assertTrue("Player Roll Loaded Die is not SKUNK",
@@ -87,7 +87,7 @@ public class PlayerTest {
 		Die die1  = new Die(load1);
 		Die die2  = new Die(load2);		
 		Dice dice = new Dice(die1, die2);
-		Player p1 = new Player("Player_1");
+		Player p1 = new Player("Player_1", false);
 		
 		playerTurn = p1.RollDice(dice);
 		assertTrue("Player Roll Loaded Die is not SKUNK/DEUCE",
@@ -102,7 +102,7 @@ public class PlayerTest {
 		Die die1  = new Die(load1);
 		Die die2  = new Die(load2);		
 		Dice dice = new Dice(die1, die2);
-		Player p1 = new Player("Player_1");	
+		Player p1 = new Player("Player_1", false);	
 		
 		playerTurn = p1.RollDice(dice);
 		assertTrue("Player Roll Loaded Die is not TWO SKUNK",
@@ -118,7 +118,7 @@ public class PlayerTest {
 		Die die1  = new Die(load1);
 		Die die2  = new Die(load2);		
 		Dice dice = new Dice(die1, die2);
-		Player p1 = new Player("Player_1");	
+		Player p1 = new Player("Player_1", false);	
 		
 		playerTurn = p1.RollDice(dice);
 		assertFalse("Player Roll Loaded Die is not Good Roll",
@@ -139,7 +139,7 @@ public class PlayerTest {
 		Die die1  = new Die(load1);
 		Die die2  = new Die(load2);		
 		Dice dice = new Dice(die1, die2);
-		Player p1 = new Player("Player_1");	
+		Player p1 = new Player("Player_1", false);	
 		
 		playerTurn = p1.RollDice(dice);
 		assertFalse("Player Roll Loaded Die is not Good Roll",
@@ -156,7 +156,7 @@ public class PlayerTest {
 	public void testGetStatus() {
 		String playerStatus;// = new String();
 		String playerTest = new String("Player_1: Score= 0 Chips: 50 (Blue= 2,Red= 4,White= 10)");
-		Player p1 = new Player("Player_1");
+		Player p1 = new Player("Player_1", false);
 		
 		playerStatus = p1.GetStatus();
 		

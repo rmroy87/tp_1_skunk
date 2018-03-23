@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
-import edu.princeton.cs.introcs.StdIn;
-import edu.princeton.cs.introcs.StdOut;
+//import edu.princeton.cs.introcs.StdIn;
+//import edu.princeton.cs.introcs.StdOut;
 
 public class SkunkApp 
 {
@@ -38,11 +38,11 @@ public class SkunkApp
 		this.gamePlayers = new ArrayList<Player> (2);
 		this.nextSeriesStatus = new int[2];
 		
-		thePlayer = new Player(theP1Name);
+		thePlayer = new Player(theP1Name, false);
 		gamePlayers.add(thePlayer);	
 		nextSeriesStatus[0] = 1;
 		
-		thePlayer = new Player(theP2Name);
+		thePlayer = new Player(theP2Name, false);
 		gamePlayers.add(thePlayer);	
 		nextSeriesStatus[1] = 1;
 		
@@ -175,6 +175,7 @@ public class SkunkApp
 		String newPlayer = new String();
 		Player thePlayer;
 		int newPlayerStatus = 1;
+		boolean botPlayer;
 	
 		this.numGamePlayers = theNumGamePlayers;
 		gamePlayers = new ArrayList<Player> (theNumGamePlayers);
@@ -182,7 +183,10 @@ public class SkunkApp
 		
 		for(i=0;i<theNumGamePlayers;i++) {
 			newPlayer = this.SetupPlayerName(i+1);
-			thePlayer = new Player(newPlayer);
+			botPlayer = this.ui.DisplayYesNoPrompt("Is this player a BOT?");
+		
+			thePlayer = new Player(newPlayer, botPlayer);
+		
 			gamePlayers.add(thePlayer);	
 			nextSeriesStatus[i] = newPlayerStatus;
 		}		

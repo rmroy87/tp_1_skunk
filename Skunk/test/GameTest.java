@@ -15,8 +15,8 @@ public class GameTest {
 		Die die2  = new Die(load2);		
 		Dice dice = new Dice(die1, die2);
 			
-		Player p1 = new Player("Player_1");
-		Player p2 = new Player("Player_2");		
+		Player p1 = new Player("Player_1", false);
+		Player p2 = new Player("Player_2", false);		
 		UI ui = new UI();
 		
 		ArrayList<Player> players = new ArrayList<Player> (2);
@@ -39,8 +39,8 @@ public class GameTest {
 		Die die2  = new Die(load2);		
 		Dice dice = new Dice(die1, die2);
 			
-		Player p1 = new Player("Player_1");
-		Player p2 = new Player("Player_2");		
+		Player p1 = new Player("Player_1", false);
+		Player p2 = new Player("Player_2", false);		
 		UI ui = new UI();
 		
 		ArrayList<Player> players = new ArrayList<Player> (2);
@@ -67,8 +67,8 @@ public class GameTest {
 		Die die2  = new Die(load2);		
 		Dice dice = new Dice(die1, die2);
 			
-		Player p1 = new Player("Player_1");
-		Player p2 = new Player("Player_2");		
+		Player p1 = new Player("Player_1", false);
+		Player p2 = new Player("Player_2", false);		
 		UI ui = new UI();
 		
 		ArrayList<Player> players = new ArrayList<Player> (2);
@@ -87,8 +87,8 @@ public class GameTest {
 		Die die2  = new Die(load2);		
 		Dice dice = new Dice(die1, die2);
 			
-		Player p1 = new Player("Player_1");
-		Player p2 = new Player("Player_2");		
+		Player p1 = new Player("Player_1", false);
+		Player p2 = new Player("Player_2", false);		
 		UI ui = new UI();
 		
 		ArrayList<Player> players = new ArrayList<Player> (2);
@@ -124,8 +124,8 @@ public class GameTest {
 		virtPrompt[10] = "N";
 		virtPrompt[11] = "N";
 		UI ui = new UI(virtPrompt, 12);			
-		Player p1 = new Player("Player_1");
-		Player p2 = new Player("Player_2");
+		Player p1 = new Player("Player_1", false);
+		Player p2 = new Player("Player_2", false);
 		
 		ArrayList<Player> players = new ArrayList<Player> (2);
 		players.add(p1);
@@ -174,8 +174,8 @@ public class GameTest {
 		virtPrompt[10] = "Y";
 		virtPrompt[11] = "N";
 		UI ui = new UI(virtPrompt, 12);			
-		Player p1 = new Player("Player_1");
-		Player p2 = new Player("Player_2");
+		Player p1 = new Player("Player_1", false);
+		Player p2 = new Player("Player_2", false);
 		
 		ArrayList<Player> players = new ArrayList<Player> (2);
 		players.add(p1);
