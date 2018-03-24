@@ -7,10 +7,27 @@ public class SkunkAppTest {
 	@Test
 	public void testSetupMatchQuit() {
 		int match;
-		String[] virtPrompt = new String[1];
-		virtPrompt[0] = "3";
+		String[] virtPrompt = new String[3];
+		virtPrompt[0] = "4";
 		
 		UI ui = new UI(virtPrompt, 1);	
+		
+		SkunkApp s = new SkunkApp(ui);
+		
+		match = s.SetupSkunkMatch();
+		
+		assertTrue("Match Status != -1",
+				   (match == -1));
+		
+	}
+	@Test
+	public void testSetupMatchRules() {
+		int match;
+		String[] virtPrompt = new String[3];
+		virtPrompt[0] = "3";
+		virtPrompt[1] = "4";
+		
+		UI ui = new UI(virtPrompt, 2);	
 		
 		SkunkApp s = new SkunkApp(ui);
 		
@@ -99,12 +116,14 @@ public class SkunkAppTest {
 	@Test
 	public void testSetupPlayerNames() {
 		int numPlayers;
-		String[] virtPrompt = new String[2];
+		String[] virtPrompt = new String[4];
 		virtPrompt[0] = "Player1";
-		virtPrompt[1] = "Player2";
+		virtPrompt[1] = "N";
+		virtPrompt[2] = "Player2";
+		virtPrompt[3] = "N";
 		String[] test = new String[3];
 		
-		UI ui = new UI(virtPrompt, 2);	
+		UI ui = new UI(virtPrompt, 4);	
 		
 		SkunkApp s = new SkunkApp(ui);
 	
@@ -124,7 +143,7 @@ public class SkunkAppTest {
 				   (test[0] == virtPrompt[0]));
 		test[1] =  s.GetPlayerName(1);
 		assertTrue("Player 2 Name != Player2",
-				   (test[1] == virtPrompt[1]));
+				   (test[1] == virtPrompt[2]));
 		test[2] =  s.GetPlayerName(2);
 		assertTrue("Player 3 Name != Invalid Index",
 				   (test[2] == "Invalid Index"));
